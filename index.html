@@ -15,8 +15,13 @@
 	<body>
 		<style>
 			@font-face {
-			  font-family: paFont;
+			  font-family: 'paFont';
 			  src: url('font/IRANSansWeb_Medium.woff');
+			}
+			
+			@font-face {
+			  font-family: 'ComicSans';
+			  src: url('font/ComicSans.woff');
 			}
 			
 			body
@@ -90,9 +95,10 @@
 				padding-left: 30px;
 				padding-bottom: 25px;
 			}
-			.pchart
+			.pchart, .ptable
 			{
 				flex: 50%;
+				position: relative;
 				max-width: calc(50% - 5px);
 				background-color: rgba(242, 242, 242, 0.8);
 				border-radius: 4px 4px 6px 6px;
@@ -100,10 +106,76 @@
 			}
 			
 			@media only screen and (max-width: 999px) {
-				.pchart
+				.pchart, .ptable
 				{
 					max-width: 100%;
 				}
+			}
+			
+			.ptable
+			{
+				text-align: center;
+			}
+			
+			.tableHandler
+			{
+				height: 315px;
+				width: 100%;
+				overflow: auto;
+				border: solid 2px white;
+				border-radius: 4px;
+				max-width: 500px;
+				text-align: center;
+				display: inline-block;
+				margin: 20px;
+			}
+			
+			.table>:not(caption)>*>*
+			{
+				border-bottom-color: white;
+			}
+			
+			.table > :not(caption) > tr:last-child > td
+			{
+				<!-- border-bottom: none; !-->
+			}
+			
+			tr > td:nth-child(2)
+			{
+				direction: ltr;
+			}
+			
+			.smalltext
+			{
+				font-size: 0.82rem;
+			}
+			
+			.table
+			{
+				display: inline-table;
+				border-spacing: 0;
+				border-collapse: separate;
+				border-style: hidden;
+				direction: rtl;
+				font-family: 'paFont';
+				background-color: #c2c9c7;
+				-webkit-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
+				user-select: text;
+				text-align: center;
+			}
+			
+			tbody > tr
+			{
+				transition: background-color 0.4s;
+				background-color: #c2c9c7;
+			}
+			
+			tbody > tr:hover
+			{
+				
+				background-color: #a0aba8;
 			}
 			
 			@media (pointer: fine) {
@@ -125,6 +197,10 @@
 				{
 					padding: 15px;
 					padding-bottom: 35px;
+				}
+				.slider
+				{
+					overflow: auto !important;
 				}
 			}
 			
@@ -168,9 +244,11 @@
 				background-color: #e6e6e6;
 			}
 			
-			.stockItem > span
+			.stockItem > span:not(.highlight)
 			{
 				font-size: 0.84rem;
+				display: inline-block;
+				margin: 2px 0px -4px 0px;
 			}
 			
 			.stockslide > hr
@@ -265,6 +343,113 @@
 				background-color: #f2f2f2;
 			}
 			
+			text[fill="#222222"][text-anchor="middle"]
+			{
+				direction: rtl;
+			}
+			
+			.pInput
+			{
+				font-family: 'paFont';
+				margin: 0px 20px 10px 20px;
+				max-width: calc(100% - 40px);
+				text-align: center;
+			}
+			
+			.cbutton
+			{
+				font-family: 'ComicSans';
+				width: calc(50% - 28px);
+				margin: 0px 15px 15px 0px;
+				background-color: #159cae;
+				border-color: #159cae;
+				color: white;
+				transition: border-color 0.4s, background-color 0.4s, box-shadow 0.3s;
+			}
+			
+			.cbutton:hover
+			{
+				background-color: #117888;
+				border-color: #117888;
+				color: white;				
+			}
+			
+			.cbutton:last-child
+			{
+				margin: 0px;
+				margin-bottom: 15px;
+			}
+			
+			.cbutton:focus
+			{
+				box-shadow:0 0 0 .25rem rgba(20, 143, 159, 0.5);
+			}
+			
+			.highlight
+			{
+				display: inline-block;
+				padding: 0px 2px 0px 2px;
+				border-bottom: 2px solid #ff1a1a;
+				line-height: 19px;				
+			}
+			
+			.stockItem.disabled > span.highlight
+			{
+				border-bottom: 2px solid #ffcccc;
+			}
+			
+			.tableInput
+			{
+				display: inline-block;
+				text-align: center;
+				max-width: 62px;
+				padding: 5px 0px 3px 0px;
+			}
+			
+			.slider
+			{
+				display: block;
+				position: sticky;
+				width: calc(100% - 20px);
+				margin-left: 10px;
+				background-color: rgba(255, 255, 255, 0.6);
+				border-radius: 15px;
+				height: 40px;
+				direction: rtl;
+				overflow: hidden;
+				padding: 5px 6px;
+				white-space: nowrap;
+				scroll-behavior: smooth;
+				transition: box-shadow 0.4s;
+			}
+			
+			.slider:focus
+			{
+				 box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .25);
+			}
+			
+			.slideItem
+			{
+				display: inline-block;
+				cursor: pointer;
+				transition: background-color 0.4s;
+				background-color: #159cae;
+				font-family: 'paFont';
+				color: white;
+				padding: 3px 7px;				
+				border-radius: 6px;
+				font-size: 15px;
+			}
+			
+			.slideItem:not(first-child)
+			{
+				margin-right: 5px;
+			}
+			
+			.slideItem:hover
+			{
+				background-color: #0e6471;
+			}
 		</style>
 		
 		<div id="bodydisabler" class="bodydisabler">
@@ -272,7 +457,7 @@
 		
 		<div class="header">	
 			<div class="input-group mx-auto" style="z-index: 101">		  
-			  <input autocomplete="off" id="stockSymbol" insider='true' dir="rtl" lang="fa" type="text" class="form-control" oninput="searchStock(this)" placeholder="نام یا نماد یک شرکت را وارد کنید">
+			  <input autocomplete="off" id="stockSymbol" insider='true' dir="rtl" lang="fa" type="text" class="form-control" placeholder="نام یا نماد یک شرکت را وارد کنید">
 			  <span class="input-group-text"><img src="images/favico.ico" /></span>
 			</div>
 			<div id="stockList" tabindex="-1" dir="rtl" insider='true' lang="fa" class="stockslide">
@@ -289,10 +474,1022 @@
 	</body>
 </html>
 
+<!--
+<script src="network/script.js"></script>
+-->
+
 <script type="text/javascript" src="script/main.js"></script>
 <script type="text/javascript" src="script/obfuscated.js"></script>
 
 
+var stockPriceInput = null;
+var charLoaded = false, bodydisabler = document.getElementById("bodydisabler"), handlerElement = document.getElementById("handler"), stockList = document.getElementById("stockList"), stockSymbol = document.getElementById("stockSymbol"), loadingData = false, showingList = false;
+stockSymbol.oninput = function()
+{
+	searchStock(stockSymbol);
+};
+
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(function() { charLoaded = true; });
+
+function drawColumn(stockItemData, Title, Data)
+{
+	var parent = document.createElement("div");
+	parent.className = "ptable";
+	parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
+	handlerElement.appendChild(parent);
+	
+	var handler = document.createElement("div");
+	handler.className = "tableHandler";
+	var table = document.createElement("table");
+	table.className = "table";
+	var header = table.createTHead();
+	var row = header.insertRow(0);
+	for (var i = 0, j = Data[0].length; i < j; i++)
+	{
+		var head = document.createElement("th");
+		head.innerText = Data[0][i];
+		row.appendChild(head);
+	}
+	
+	var body = table.createTBody(), startIndex = 1, defaultPrice = null;
+	if (typeof(Data[1][0]) == "number")
+	{
+		defaultPrice = Data[1];
+		startIndex = 2;
+	}
+	
+	for (var i = startIndex, j = Data.length; i < j; i++)
+	{
+		var row = body.insertRow(i - startIndex);
+		let cell = row.insertCell(0);
+		cell.innerHTML = Data[i][0];
+		
+		if (Data[i].length > 2)
+		{
+			cell.setAttribute("title", Data[i][2]);
+		}
+		
+		cell = row.insertCell(1);
+		cell.innerText = Data[i][1];
+		
+		if (Data[i][0] == "حاشیه سود خالص")
+			HOOKValueWithInput(cell, true);
+		else if(Data[i][0].includes("EPS"))
+			HOOKValueWithInput(cell, false);
+	}
+	
+	handler.appendChild(table);
+	
+	var theInput = document.createElement("input");
+	stockPriceInput = theInput;
+	theInput.setAttribute("placeholder", "قیمت سهم");
+	theInput.setAttribute("autocomplete", "off");
+	theInput.oninput = function(event)
+	{
+		var theVal = parseInt(theInput.value.replaceAll(",", ""));
+		
+		if (!isNaN(theVal) && theVal > 0)
+		{
+			theInput.value = theVal.toString().split(/(?=(?:\d{3})+$)/).join(",");
+			if (PonETimer != null)
+				clearTimeout(PonETimer);
+			
+			PonETimer = setTimeout(function() {
+				if (CalculatePE(theVal, false))
+					localStorage.setItem(stockItemData["enSymbol"] + "price", JSON.stringify([theVal, Date.now()]));
+			}, 500);
+		}		
+	};
+	theInput.className = "form-control pInput";
+	
+	PonEElement = null;
+	var lastPrice = localStorage.getItem(stockItemData["enSymbol"] + "price");
+	//lastPrice = "2262";
+	if (lastPrice != null)
+	{
+		lastPrice = JSON.parse(lastPrice);
+		if (defaultPrice != null && defaultPrice[1] > lastPrice[1])
+			lastPrice = defaultPrice;
+		
+		theInput.value = lastPrice[0].toString().split(/(?=(?:\d{3})+$)/).join(",");
+	}
+	else if (defaultPrice != null)
+	{
+		lastPrice = defaultPrice;
+		theInput.value = defaultPrice[0].toString().split(/(?=(?:\d{3})+$)/).join(",");
+	}
+	
+	handler.appendChild(theInput);
+	
+	var button = document.createElement("button");
+	button.className = "btn cbutton";
+	button.innerText = "TSETMC";	
+	var targetTsetmc = "http://www.tsetmc.com/Loader.aspx?ParTree=151311&i=" + stockItemData["tseCode"];
+	button.onclick = function()
+	{
+		window.open(targetTsetmc, "_blank");
+	};
+	handler.appendChild(button);
+	
+	if (typeof(stockItemData["Rahavard"]) != "undefined")
+	{
+		button = document.createElement("button");
+		button.className = "btn cbutton";
+		button.innerText = "Rahavard 365";
+		var targetRahavard = "https://rahavard365.com/asset/" + stockItemData["Rahavard"] + "/chart";
+		button.onclick = function()
+		{
+			window.open(targetRahavard, "_blank");
+		};
+		handler.appendChild(button);
+	}
+	/*
+	<input autocomplete="off" id="stockSymbol" insider="true" dir="rtl" lang="fa" type="text" class="form-control" oninput="searchStock(this)" placeholder="قیمت" style="
+    display: block;
+    margin: 0px 20px 20px;
+    max-width: calc(100% - 40px);
+    text-align: center;
+">*/
+
+	parent.appendChild(handler);
+	
+	if (lastPrice != null)
+		CalculatePE(lastPrice[0], true);
+}
+
+function HOOKValueWithInput(element, haspercentage)
+{
+	element.ondblclick = function()
+	{
+		let originalCellContent = element.innerText;
+		if (element.children.length == 0)
+		{
+			element.firstChild.remove();
+			
+			var inputElement = document.createElement("input");
+			inputElement.className = "form-control tableInput";
+			if (!haspercentage)
+				inputElement.style = "min-width: 75px;";
+			inputElement.value = originalCellContent;			
+			inputElement.onblur = function()
+			{
+				var newValue = parseInt(inputElement.value.replaceAll("%", "").replaceAll(",", ""));
+				if (!isNaN(newValue))
+				{
+					if (haspercentage)
+					{
+						updateCalculcations(parseInt(originalCellContent.replaceAll("%", "").replaceAll(",", "")), newValue);
+						element.innerHTML = newValue + "%";
+					}
+					else
+					{
+						element.innerHTML = newValue.toString().split(/(?=(?:\d{3})+$)/).join(",");				
+						if (stockPriceInput != null)
+						{
+							var theVal = parseInt(stockPriceInput.value.replaceAll(",", ""));
+							if (!isNaN(theVal) && theVal > 0)
+								CalculatePE(theVal, true);
+						}
+					}
+					
+						
+				}
+			};
+			inputElement.onkeydown = function(event)
+			{
+				if (event.keyCode == 13)
+					inputElement.blur();
+			};
+			element.appendChild(inputElement);
+			inputElement.focus();
+			if (haspercentage)
+				inputElement.setSelectionRange(0, originalCellContent.length - 1);
+			else
+				inputElement.setSelectionRange(0, originalCellContent.length);
+			//cell.innerHTML = "<input class='' value='" + originalCellContent + "' onblur='this.parentNode.innerHTML = t' />";
+		}
+	};
+}
+
+function updateCalculcations(originalValue, newValue)
+{
+	var tables = document.getElementsByTagName("table");
+	if (tables.length > 0)
+	{
+		tables = tables[0];
+		var rows = tables.getElementsByTagName("td");
+		for (var i = 0, j = rows.length; i < j; i++)
+		{
+			if (rows[i].innerText.startsWith("EPS"))
+			{
+				var EPS = parseInt(rows[i + 1].innerText.replaceAll(",", ""));			
+				rows[i + 1].innerText = Math.round((EPS / originalValue) * newValue).toString().split(/(?=(?:\d{3})+$)/).join(",");
+			}
+		}
+	}
+	if (stockPriceInput != null)
+	{
+		var theVal = parseInt(stockPriceInput.value.replaceAll(",", ""));
+		if (!isNaN(theVal) && theVal > 0)
+			CalculatePE(theVal, true);
+	}
+}
+
+var PonEElement = null;
+
+function CalculatePE(input, system)
+{
+	if (!isNaN(input))
+	{
+		var tables = document.getElementsByTagName("table");
+		if (tables.length > 0)
+		{
+			var EPSValues = 0, EPSCounter = 0;
+			
+			tables = tables[0];
+			var rows = tables.getElementsByTagName("td");
+			for (var i = 0, j = rows.length; i < j; i++)
+			{
+				if (rows[i].innerText.startsWith("EPS"))
+				{
+					var currentEPS = parseInt(rows[i + 1].innerText.replaceAll(",", ""));
+					if (i > 0 && currentEPS > 0)
+					{
+						if (EPSCounter > 0 && EPSValues == 0)
+							EPSCounter = 0;
+						EPSValues += currentEPS;
+						EPSCounter++;
+					}
+					else if (i == 0)
+					{
+						EPSValues += currentEPS;
+						EPSCounter++;
+					}
+					console.log(rows[i].innerText + " | " + rows[i + 1].innerText);
+				}
+			}
+			
+			if (EPSCounter > 0)
+			{
+				var averageEPS = (EPSValues / EPSCounter), PonE = input / averageEPS;
+				if (averageEPS == 0)
+					PonE = 0;
+					
+				if(Math.round(PonE) !== PonE)
+					PonE = PonE.toFixed(2);
+				
+				if (PonEElement == null)
+				{
+					var row = tables.getElementsByTagName('tbody')[0].insertRow();
+					var cell = row.insertCell();
+					cell.innerHTML = "P/E <span class='smalltext'>Forward</span>";
+					
+					cell = row.insertCell();
+					cell.innerText = PonE;
+					PonEElement = cell;
+					
+					if (!system)
+						tables.parentNode.scrollTo(0, tables.parentNode.scrollHeight);
+				}
+				else
+				{
+					PonEElement.innerText = PonE;
+				}
+			}
+		}
+		return true;
+	}
+	return false;
+}
+
+var chartsHandler = null, chartsSlider = null;
+
+function ShowChartID(indexID, clickedItem)
+{
+	clickedItem = clickedItem || null;
+	
+	if (clickedItem != null)
+		clickedItem.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'center' });
+	
+	indexID++;
+	var childrenList = chartsHandler.children, sliderChildren = chartsSlider.children;
+	for(var i = 1, j = childrenList.length - 1; i < j; i++)
+	{
+		if (i != indexID)
+		{
+			childrenList[i].style.display = "none";
+			sliderChildren[i - 1].style.backgroundColor = "";
+		}
+		else
+		{
+			if (clickedItem != null)
+				childrenList[i].style.opacity = "0.1";
+			childrenList[i].style.display = "block";
+			
+			let myID = i;
+			setTimeout(function()
+			{
+				childrenList[myID].style.opacity = "1";
+			}, 0);
+			
+			sliderChildren[i - 1].style.backgroundColor = "#0e6471";
+		}
+	}
+}
+
+function drawGraphicalChart(Type, Title, Data)
+{
+	if (Type != 5)
+		var data = google.visualization.arrayToDataTable(Data);
+	 
+	if (Type == 0)
+	{
+		var options = {'height': 350, 'fontName': 'paFont', 'fontSize': '15', 'backgroundColor': 'transparent', tooltip: { text: 'percentage' }, 'is3D': true};
+	}
+	else if (Type == 1 || Type == 5)
+	{
+		var options = {'height': 350, 'fontName': 'paFont', 'fontSize': '15', 'backgroundColor': 'transparent', curveType: 'function'};
+	}
+	else if (Type == 2 || Type == 3  || Type == 4)
+	{
+		var options = {'height': 350, vAxis: { minValue: 0 }, 'fontName': 'paFont', 'fontSize': '15', 'backgroundColor': 'transparent', legend: { position: 'none'}};
+		//'title': Title, 
+	}
+	
+	var parent = document.createElement("div"), child = document.createElement("div");
+	parent.className = "pchart";
+	parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
+	//child.id = childID;
+	parent.appendChild(child);
+	handlerElement.appendChild(parent);
+	
+	if (Type == 0)
+	{
+		var chart = new google.visualization.PieChart(child);
+		parent.style = "padding-bottom: 5px";
+		chart.draw(data, options);
+	}
+	else if (Type == 1)
+	{
+		var chart = new google.visualization.LineChart(child);
+		parent.style = "padding-bottom: 10px";
+		chart.draw(data, options);
+	}
+	else if (Type == 5)
+	{
+		var sliderElement = document.createElement("div");
+		sliderElement.className = "slider";
+		sliderElement.setAttribute("tabindex", "-1");
+		chartsSlider = sliderElement; // global var
+		child.style = "transition: opacity 1s";
+		options.annotations = {textStyle: { color: "white", auraColor: "117888" }};
+		
+		for (var i = 0, j = Data.length; i < j; i++) // data loop
+		{	
+			var data = google.visualization.arrayToDataTable(Data[i]["Chart"]);
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+			   { calc: MultiChartDataView,
+				 sourceColumn: 1,
+				 type: "string",
+				 role: "annotation" },
+			   2
+			]);
+		
+		
+			var chart = new google.visualization.LineChart(child);
+			chart.draw(view, options);		
+			
+			let slideItem = document.createElement("div");
+			slideItem.className = "slideItem";
+			slideItem.innerText = Data[i]["Title"];
+			slideItem.onclick = function()
+			{
+				var index = Array.prototype.indexOf.call(slideItem.parentNode.children, slideItem);
+				ShowChartID(index, slideItem);
+			};
+			sliderElement.appendChild(slideItem);
+					
+			if (i != (j - 1))
+			{				
+				child = document.createElement("div");
+				child.style = "transition: opacity 1s";
+				parent.appendChild(child);
+			}	
+		}	
+		chartsHandler = parent;
+		parent.style = "padding-bottom: 10px";
+		parent.appendChild(sliderElement);
+		
+		setTimeout(function()
+		{
+			ShowChartID(0);
+		}, 0);
+	}
+	else if (Type == 2)
+	{
+		var view = new google.visualization.DataView(data);
+		if (Data[1].length == 3)
+		{
+			view.setColumns([0, 1,
+			   { calc: "stringify",
+				 sourceColumn: 1,
+				 type: "string",
+				 role: "annotation" },
+			   2,
+			   { calc: "stringify",
+				 sourceColumn: 2,
+				 type: "string",
+				 role: "annotation" }
+			]);
+		}
+		else if (Data[1].length == 2)
+		{
+			view.setColumns([0, 1,
+			{
+				calc: "stringify",
+				sourceColumn: 1,
+				type: "string",
+				role: "annotation"
+			}
+			]);
+		}
+	}
+	else if (Type == 3)
+	{
+		var view = new google.visualization.DataView(data);
+		if (Data[1].length == 3)
+		{
+			view.setColumns([0, 1,
+			   { calc: function (dt, row) {
+					var cval = dt.getValue(row, 1), nval = dt.getValue(row, 2);
+					if (nval != 0)
+					{
+						return Math.round(((cval - nval) / nval) * 100).toString() + "%";
+					}
+					else
+					{
+						return "100%";
+					}
+				  }, //"stringify",
+				 sourceColumn: 1,
+				 type: "string",
+				 role: "annotation" },
+			   2]);
+		}
+	}
+	else if (Type == 4)
+	{
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1,
+		{ 
+			calc: function (dt, row) {
+				if (row > 0)
+				{
+					var cval = dt.getValue(row, 1), nval = dt.getValue(row - 1, 1);
+					if (nval != 0)
+					{
+						return Math.round(((cval - nval) / nval) * 100).toString() + "%";
+					}
+					else
+					{
+						return "100%";
+					}
+				}
+				else
+				{
+					return "";
+				}
+			},
+			type: "string",
+			sourceColumn: 1,
+			role: "annotation" },
+			{
+				calc: function (dt, row) {
+					if (row < 4)
+					{
+						if ('colors' in options)
+							return options.colors[0];
+						else
+							return "#3366cc";
+					}
+					else
+					{
+						if ('colors' in options)
+							return options.colors[1];
+						else
+							return "#dc3912";
+					}
+				},
+				role: "style",
+				sourceColumn: 1,
+				type: "string"
+			}
+		]);	
+	}
+	
+	if (Type == 2 || Type == 3 || Type == 4)
+	{
+		var chart = new google.visualization.ColumnChart(child);
+		parent.style = "padding-bottom: 5px";
+		chart.draw(view, options);
+	}
+}
+
+function MultiChartDataView(dt, row)
+{
+	var cval = dt.getValue(row, 1), nval = dt.getValue(row, 2);
+	if (nval != 0)
+	{
+		var showVar = Math.round(((cval - nval) / nval) * 100);
+		if (showVar > 4 || showVar < -4)
+		{
+			return showVar.toString() + "%";
+		}
+		else
+			return null;
+	}
+	else if(cval > 0)
+	{
+		return "100%";
+	}
+	else
+	{
+		return null;
+	}
+}
+
+function DrawCharts(stockItemData, stockData)
+{
+	if (charLoaded)
+	{
+		for (var i = 0, j = stockData.length; i < j; i++)
+		{
+			if (typeof(stockData[i].CharType) != 'undefined')
+			{
+				drawGraphicalChart(stockData[i].CharType, stockData[i].Title, stockData[i].Data);
+			}
+			else
+			{
+				drawColumn(stockItemData, stockData[i].Title, stockData[i].Data);
+			}
+		}
+	}
+	else
+	{
+		setTimeout(function() { DrawCharts(stockItemData, stockData); }, 1000);
+	}
+}
+
+//DrawCharts();
+//DrawCharts();
+
+stockSymbol.onfocus = function(event) {
+	if (loadingData)
+		return;
+	showingList = true;
+	if (stockSymbol.value.length == 0)
+	{
+		searchforStock(null);
+	}
+	stockSymbol.parentNode.className = "input-group mx-auto limit";
+	stockList.style.height = ((screen.height / 2) - 10) + "px";
+	bodydisabler.style = "";
+	bodydisabler.className = "bodydisabler show";
+	//document.body.className = "disabled";
+};
+
+stockSymbol.onblur = function(event) {
+	hideifNecessary(event);
+};
+
+stockList.onblur = function(event)
+{
+	hideifNecessary(event);
+};
+
+function hideifNecessary(event)
+{
+	if (showingList && (event == null || event.relatedTarget == null || event.relatedTarget.getAttribute("insider") != "true"))
+	{
+		showingList = false;
+		stockSymbol.parentNode.className = "input-group mx-auto";
+		stockList.style.height = "0px";
+		if (event != null)
+		{
+			bodydisabler.className = "bodydisabler hide";
+			setTimeout(function() { bodydisabler.style = "z-index: -1"; }, 400);
+		}	
+		//document.body.className = "";
+	}
+}
+
+var searchTimeout = null, PonETimer = null;
+function searchStock(element)
+{
+	if (searchTimeout != null)
+		clearTimeout(searchTimeout);
+	
+	var stockName = element.value;
+	if (stockName.length > 1)
+	{
+		searchTimeout = setTimeout(function() {
+			searchforStock(stockName);
+		}, 500);
+	}
+	else
+	{
+		searchTimeout = setTimeout(function() {
+			searchforStock(null);
+		}, 500);
+	}
+}
+
+function sortArray(array)
+{
+	var len = array.length;
+	for (var i = 0; i < len; i++)
+	{
+		for (var j = (i + 1); j < len; j++)
+		{
+			if (array[i][0] < array[j][0])
+			{
+				var tempval = array[i];
+				array[i] = array[j];
+				array[j] = tempval;
+			}
+		}
+	}
+}
+
+function highlighKeyword(input, keyword)
+{
+	if (keyword == null)
+	{
+		return "<span class='highlight'>" + input + "</span>";
+	}
+	else
+	{
+		var where = input.indexOf(keyword);
+		if (where != -1)
+		{
+			var start = 0, finish = input.length, wordlen = keyword.length;
+			for (var i = where; i > -1; i--)
+			{
+				if (input[i] == ' ')
+				{
+					start = (i + 1);
+					break;
+				}
+			}
+			for (var i = where, j = input.length; i < j; i++)
+			{
+				if ((i - where) >= wordlen && input[i] == ' ')
+				{
+					finish = i;
+					break;
+				}
+			}
+			return input.substring(0, start) + "<span class='highlight'>" + input.substring(start, finish) + "</span>" + input.substring(finish);
+		}
+		else
+		{
+			return input;
+		}
+	}
+}
+
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
+
+function searchforStock(stockName)
+{
+	searchTimeout = null;
+	var foundANyMatch = false;
+	var output = [], found = 0, j = stocksData.length, cache = new Map();
+	if (stockName != null)
+	{
+		for(var i = 0; i < j; i++)
+		{
+			if (stocksData[i]["symbol"] == stockName)
+			{
+				var pushItem = clone(stocksData[i]);
+				pushItem["symbol"] = highlighKeyword(pushItem["symbol"], null);
+				pushItem.indexID = i;
+				output.push([4, pushItem]);			
+				cache.set(stocksData[i]["enSymbol"], true);
+				found++;
+				foundANyMatch = true;
+			}
+			else if (stocksData[i]["symbol"].includes(stockName) || stockName.includes(stocksData[i]["symbol"]))
+			{
+				var pushItem = clone(stocksData[i]);
+				pushItem["symbol"] = highlighKeyword(pushItem["symbol"], null);
+				pushItem.indexID = i;
+				output.push([3, pushItem]);
+				cache.set(stocksData[i]["enSymbol"], true);
+				found++;
+				foundANyMatch = true;
+			}	
+			else if (stocksData[i]["title"].includes(stockName))
+			{
+				var pushItem = clone(stocksData[i]);
+				pushItem["title"] = highlighKeyword(pushItem["title"], stockName);
+				pushItem.indexID = i;
+				output.push([2, pushItem]);			
+				cache.set(stocksData[i]["enSymbol"], true);
+				found++;
+				foundANyMatch = true;
+			}
+			else if (stocksData[i]["sectorName"].includes(stockName))
+			{
+				var pushItem = clone(stocksData[i]);
+				pushItem["sectorName"] = highlighKeyword(pushItem["sectorName"], stockName);
+				pushItem.indexID = i;
+				output.push([1, pushItem]);
+				cache.set(stocksData[i]["enSymbol"], true);
+				found++;
+				foundANyMatch = true;
+			}	
+			if (found > 39)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		var stocksList = LoadLastStocks();
+		for(var i = (stocksList.length - 1); i > -1; i--)
+		{
+			if (!cache.has(stocksList[i]["enSymbol"]))
+			{
+				var pushItem = clone(stocksList[i]);
+				pushItem.indexID = pushItem.indexID;
+				output.push([0, pushItem]);
+				cache.set(stocksList[i]["enSymbol"], true);
+				found++;
+			}
+		}
+	}
+	if (found < 40)
+	{
+		for(var i = 0; i < j; i++)
+		{
+			if (!cache.has(stocksData[i]["enSymbol"]))
+			{
+				var pushItem = clone(stocksData[i]);
+				pushItem.indexID = i;
+				output.push([0, pushItem]);
+				cache.set(stocksData[i]["enSymbol"], true);
+				found++;
+			}
+			if (found > 39)
+			{
+				break;
+			}
+		}
+	}
+	sortArray(output);
+	
+	stockList.innerHTML = "";
+	for (var i = 0, j = output.length; i < j; i++)
+	{
+		var item = document.createElement("div");
+		item.className = "stockItem";
+		if (i > 0)
+		{
+			stockList.appendChild(document.createElement("hr"));
+		}
+		
+		var market = "بورس";
+		if (output[i][1]["marketUnit"] == "FaraPaye")
+		{
+			market = "بازار پایه";
+		}
+		else if (output[i][1]["marketUnit"] == "FaraBourse")
+		{
+			market = "فرابورس";
+		}
+		if (output[i][1]["sectorName"].length > 3)
+			market += " - " + output[i][1]["sectorName"];
+		item.innerHTML = output[i][1]["symbol"] + ' - ' + output[i][1]["title"] + '<br><span>' + market +'</span>';
+		let itemData = output[i][1];
+		
+		if (output[i][1]["sectorCode"] != 66 && output[i][1]["sectorCode"] != 56 && !output[i][1]["title"].includes("ح .") && !output[i][1]["title"].includes("ح."))
+		{
+			item.onclick = function()
+			{
+				var targetItem = clone(stocksData[itemData.indexID]);
+				targetItem.indexID = itemData.indexID;
+				loadStockData(targetItem);
+			};
+		}
+		else
+		{
+			item.className = "stockItem disabled";
+		}
+		
+		stockList.appendChild(item);
+	}
+	
+	stockList.scrollTo(0, 0);
+}
+
+function loadStockData(stockItemData, systemrequest)
+{
+	if (loadingData || stockSymbol.disabled)
+		return;
+	
+	systemrequest = systemrequest || false;
+	
+	if (systemrequest == false)
+		AppendLastStock(stockItemData);
+	
+	hideifNecessary(null);
+	
+	stockSymbol.value = stockItemData["symbol"];
+	bodydisabler.className = "bodydisabler loading";
+	stockSymbol.disabled = true;
+	loadingData = true;
+		
+	setTimeout(function() {	
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200)
+				{
+					handlerElement.innerHTML = "";
+					var resp = xhttp.responseText;
+					if (!resp.includes("CharType"))
+						resp = decodeURIComponent(decryptData(resp)).replaceAll("+", " ");
+					console.log(resp);
+					DrawCharts(stockItemData, JSON.parse(resp));
+				}
+				else
+				{
+					showErrorMessage("<strong>خطا!</strong> در هنگام لود کردن اطلاعات خطایی رخ داد.");
+				}
+				bodydisabler.className = "";
+				loadingData = false;
+				stockSymbol.disabled = false;
+			}
+		};
+		xhttp.open("GET", "stockData/" + stockItemData["enSymbol"] + ".hash?i=" + Date.now(), true);
+		xhttp.send();
+	}, 500);
+}
+
+var errormessagetime = null;
+function showErrorMessage(text)
+{
+	if (errormessagetime != null)
+		clearTimeout(errormessagetime);
+		
+	var element = document.getElementById('errormessage');
+	element.innerHTML = text;
+	element.style.display = "block";
+	
+	setTimeout(function() { element.style.opacity = "1"; }, 200);
+	
+	errormessagetime = setTimeout(function()
+	{
+		element.style.opacity = "0";
+		errormessagetime = setTimeout(function() {
+			element.style.display = "none";
+		}, 400);	
+	}, 3000);
+}
+
+window.onload = function() {
+    if (screen.width < 600) {
+        var mvp = document.getElementById('vp');
+        mvp.setAttribute('content','width=600');
+    }
+}
+
+function loadlastStock()
+{
+	var lastStocks = localStorage.getItem("lastStocks");
+	if (lastStocks == null)
+	{
+		var foldItem = {"indexID": 71, "symbol": "فولاد", "enSymbol": "FOLD1", "title": "فولاد مبارکه اصفهان", "sectorCode": "27", "sectorName": "فلزات اساسي", "marketUnit": "Exchange", "tseCode": "46348559193224090", "Rahavard": "453"};
+		localStorage.setItem("lastStocks", JSON.stringify([foldItem]));
+		searchforStock("فولاد");
+		loadStockData(foldItem, true);
+	}
+	else
+	{
+		lastStocks = JSON.parse(lastStocks);
+		searchforStock(lastStocks[lastStocks.length - 1]["symbol"]);
+		loadStockData(lastStocks[lastStocks.length - 1], true);
+	}
+}
+
+function LoadLastStocks()
+{
+	var lastStocks = localStorage.getItem("lastStocks");
+	if (lastStocks == null)
+	{
+		return [{"indexID": 71, "symbol": "فولاد", "enSymbol": "FOLD1", "title": "فولاد مبارکه اصفهان", "sectorCode": "27", "sectorName": "فلزات اساسي", "marketUnit": "Exchange", "tseCode": "46348559193224090", "Rahavard": "453"}];
+	}
+	else
+	{
+		lastStocks = JSON.parse(lastStocks);
+		return lastStocks;
+	}
+}
+
+function AppendLastStock(stockItem)
+{
+	var lastStocks = localStorage.getItem("lastStocks");
+	if (lastStocks == null)
+	{
+		localStorage.setItem("lastStocks", JSON.stringify([stockItem]));
+	}
+	else
+	{
+		lastStocks = JSON.parse(lastStocks);
+		var j = lastStocks.length;
+		if (j > 4)
+		{
+			lastStocks.splice(0, 1);
+			j--;
+		}
+		
+		for (var i = 0; i < j; i++)
+		{
+			if (lastStocks[i]["symbol"] == stockItem["symbol"])
+			{
+				lastStocks.splice(i, 1);
+				break;
+			}
+		}
+		lastStocks.push(stockItem);
+		localStorage.setItem("lastStocks", JSON.stringify(lastStocks));
+	}
+}
+loadlastStock();
+
+
+function decryptData(s) {
+	var b64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    var b64d={};
+    for(var i=0; i<64; i++){
+        b64d[b64.charAt(i)]=i;
+    }
+    var d=new Map();
+    var num=256;
+    var word=String.fromCharCode((b64d[s[0]]+(b64d[s[1]]<<6)+(b64d[s[2]]<<12)) - 0x18);
+    var prev=word;
+    var o=[word];
+    for(var i=3; i<s.length; i+=3) {
+        var key= (b64d[s[i]]+(b64d[s[i+1]]<<6)+(b64d[s[i+2]]<<12));
+        word=key < 256 ? String.fromCharCode(key - 0x18) : d.has(key) ? d.get(key) : word+word.charAt(0);
+        o.push(word);
+        d.set(num++, prev+word.charAt(0));
+        prev=word;
+        if(num==(1<<18)-1) {
+            d.clear();
+            num=256;
+        }
+    }	
+	return o.join("");
+}
+
+window.addEventListener("wheel", function(e)
+{
+	if (document.activeElement === chartsSlider)
+	{
+		if (e.deltaY > 0) // Down
+		{
+			chartsSlider.scrollTo({
+			  top: 0,
+			  left: chartsSlider.scrollLeft - 30,
+			  behavior: 'instant'
+			});
+		}
+		else
+		{
+			chartsSlider.scrollTo({
+			  top: 0,
+			  left: chartsSlider.scrollLeft + 30,
+			  behavior: 'instant'
+			})
+		}
+		e.preventDefault();
+	}
+	
+}, { passive: false });
+</script
 
 
 
