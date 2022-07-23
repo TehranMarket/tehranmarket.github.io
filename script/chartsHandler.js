@@ -289,9 +289,9 @@ demo2.addEventListener('click', function() {
 //                  Initializer
 //*****************************************************//
 window.onload = function() {
-    if (screen.width < 600) {
+    if (screen.width < 500) {
         var mvp = document.getElementById('vp');
-        mvp.setAttribute('content','width=600');
+        mvp.setAttribute('content','width=500');
     }
 	chartLoaded = true;
 	loadlastStock();
