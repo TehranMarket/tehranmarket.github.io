@@ -180,7 +180,7 @@ tbody > tr:hover
 	.handler
 	{
 		padding: 15px;
-		padding-bottom: 35px;
+		padding-bottom: 85px;
 	}
 	.slider
 	{
@@ -452,10 +452,8 @@ text[fill="#222222"][text-anchor="middle"]
 	color: white;
 	width: 50.0vw;
 	padding: 15px;
-	font-size: 1.05rem;
-	font-family: ComicSans;
-	src: url('../font/Comic.ttf');
-	font-display: swap;
+	font-size: 1.1rem;
+	font-family: 'paFont';
 	background-color: #4c5767;
 	transition: background-color 0.4s ease;
 }
