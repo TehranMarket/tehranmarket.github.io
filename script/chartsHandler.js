@@ -134,8 +134,8 @@ function ShowChartID(indexID, clickedItem)
 {
 	clickedItem = clickedItem || null;
 	
-	if (clickedItem != null)
-		clickedItem.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'center' });
+	//if (clickedItem != null)
+	//	clickedItem.scrollIntoViewIfNeeded({ behavior: "smooth", block: 'nearest', inline: 'center' });
 	
 	indexID++;
 	var childrenList = chartsHandler.children, sliderChildren = chartsSlider.children;
@@ -218,17 +218,24 @@ function drawGraphicalChart(Type, Title, Data, rawData)
 	{
 		var parent = document.createElement("div"), child = document.createElement("div");
 		parent.className = "pchart";
+		
+		let realparent = parent;	
+		parent = document.createElement("div");
+		realparent.appendChild(parent);
+		
 		parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
 		parent.appendChild(child);
-		handlerElement.appendChild(parent);
+		handlerElement.appendChild(realparent);
 		
 		var sliderElement = document.createElement("div");
 		sliderElement.className = "slider";
 		sliderElement.setAttribute("tabindex", "-1");
 		chartsSlider = sliderElement; // global var
-		child.style = "transition: opacity 1s";
+		child.style = "width 100%; transition: opacity 1s";
 		
 		var customWidth = child.clientWidth;
+		if (customWidth < 600)
+			customWidth = 600;
 		
 		var start = getTimestamp();
 		
@@ -275,7 +282,11 @@ demo2.addEventListener('click', function() {
 		
 		console.log("FINISHED, TOOK : " + (getTimestamp() - start));
 		chartsHandler = parent;
-		parent.style = "padding-bottom: 10px";
+		if (isDeviceAndroid)
+			parent.style = "min-width: 600px; padding-bottom: 40px";
+		else
+			parent.style = "min-width: 600px; padding-bottom: 10px";
+		
 		parent.appendChild(sliderElement);
 		
 		setTimeout(function()
@@ -306,12 +317,20 @@ function DrawMixedZingLineChart(Title, Data, ExtraData)
 		child = document.createElement("div");
 	
 	parent.className = "pchart";
+	parent.style = "padding-bottom: 20px";
+	
+	let realparent = parent;
+	
+	parent = document.createElement("div");
+	parent.style = "min-width: 600px";
+	realparent.appendChild(parent);
+	
 	parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
-	parent.style = "padding-bottom: 20px";		
+			
 	child.id = getnewChartID();	
 	parent.appendChild(child);
 	
-	handlerElement.appendChild(parent);
+	handlerElement.appendChild(realparent);
 	
 	var myConfiguration = JSON.parse(JSON.stringify(zingMixedChart));
 	
@@ -408,12 +427,18 @@ function DrawZingLineChart(Title, Data, ShowPercentage, targetChildren, customWi
 			child = document.createElement("div");
 		
 		parent.className = "pchart";
+		parent.style = "padding-bottom: 20px";
+		
+		let realparent = parent;
+		
+		parent = document.createElement("div");
 		parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
-		parent.style = "padding-bottom: 20px";		
+		realparent.appendChild(parent);
+		
 		child.id = getnewChartID();	
 		parent.appendChild(child);
 		
-		handlerElement.appendChild(parent);
+		handlerElement.appendChild(realparent);
 	}
 	else
 	{
@@ -652,14 +677,20 @@ function DrawPieBarChart(Title, Data)
 	var parent = document.createElement("div"),
 		child = document.createElement("div");
 	
-	parent.className = "pchart";
+	let realParent = parent;
+	
+	parent = document.createElement("div");
+	parent.style = "min-width: 600px";
+	realParent.appendChild(parent);
+	
+	realParent.className = "pchart";
 	parent.innerHTML = "<div class='chartTitle'>" + Title + "</div>";
-	parent.style = "padding-bottom: 20px";		
+	realParent.style = "padding-bottom: 20px";		
 	child.id = getnewChartID();
 
 	parent.appendChild(child);
 	
-	handlerElement.appendChild(parent);
+	handlerElement.appendChild(realParent);
 
 	var myConfiguration = JSON.parse(JSON.stringify(zingPieChart));
 	

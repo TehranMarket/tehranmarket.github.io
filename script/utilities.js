@@ -11,13 +11,18 @@ var chartLoaded = false,
 	chartsSlider = null,
 	searchTimeout = null,
 	PonETimer = null,
-	errormessagetime = null
+	errormessagetime = null,
+	isDeviceAndroid = false
 ;
 
 stockSymbol.oninput = function()
 {
 	searchStock(stockSymbol);
 };
+
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+    isDeviceAndroid = true;
+}
 
 //*****************************************************//
 //                  Dynamic
