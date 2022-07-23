@@ -104,7 +104,7 @@ input.form-control:focus {
 .tableHandler
 {
 	height: 315px;
-	width: 100%;
+	width: calc(100% - 40px);
 	overflow: auto;
 	border: solid 2px white;
 	border-radius: 4px;
