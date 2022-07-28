@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="X-UA-Compatible" content="IE=11"><title>
+	
+</title><link href="https://www.codal.ir/css/Main.css" rel="stylesheet" type="text/css"><link href="https://www.codal.ir/css/fepsProductV1.css" rel="stylesheet" type="text/css">
+   
+    <!--[if lt IE 7]>
+	<link href="https://www.codal.ir/css/IE6_new_style.css" type="text/css" rel="stylesheet" />
+	<![endif]-->
+
+    <script language="javascript" type="text/javascript" src="https://www.codal.ir/js/PKI.js"></script>
+
+    <script language="javascript" type="text/javascript" src="https://www.codal.ir/js/Common.js"></script>
+
+    <script language="javascript" type="text/javascript" src="https://www.codal.ir/js/jquery-1.8.3.min.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        function btnCancelClick() {
+            window.close();
+        }
+
+        function btnNextClick() {
+            if (document.getElementById("ctl00_ddlTable").selectedIndex < document.getElementById("ctl00_ddlTable").length - 1)
+                document.getElementById("ctl00_ddlTable").selectedIndex += 1;
+            else
+                document.getElementById("ctl00_ddlTable").selectedIndex = 0;
+        }
+
+        function btnPrevClick() {
+            if (document.getElementById("ctl00_ddlTable").selectedIndex > 0)
+                document.getElementById("ctl00_ddlTable").selectedIndex -= 1;
+            else
+                document.getElementById("ctl00_ddlTable").selectedIndex = document.getElementById("ctl00_ddlTable").length - 1;
+        }
+
+        //function CalcPer(txbNewValue, txbOldValue, txbChangePer) {
+        //    Change = '--';
+        //    a = parseInt(DeformatCurrency(document.getElementById(txbNewValue).value));
+        //    b = parseInt(DeformatCurrency(document.getElementById(txbOldValue).value));
+        //    if (a * b > 0) {
+        //        Change = (a - b) * 100.0 / b;
+        //        Change = Math.round(Change);
+        //    }
+        //    formatPosNeg(txbChangePer, Change);
+        //}
+
+
+        function getDocWidth() {
+            var D = document;
+            return Math.max(
+                D.body.scrollWidth, D.documentElement.scrollWidth,
+                D.body.offsetWidth, D.documentElement.offsetWidth,
+                D.body.clientWidth, D.documentElement.clientWidth
+            );
+        }
+
+        function getDocHeight() {
+            var D = document;
+            return Math.max(
+                D.body.scrollHeight, D.documentElement.scrollHeight,
+                D.body.offsetHeight, D.documentElement.offsetHeight,
+                D.body.clientHeight, D.documentElement.clientHeight
+            );
+        }
+
+
+    </script>
+
+    
+<meta http-equiv="Cache - Control" content="no - cache, no - store, must - revalidate">
+<meta http-equiv="Pragma" content="no - cache">
+<meta http-equiv="Expires" content="0"></head>
+<body>
+    <form name="aspnetForm" method="post" action="" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	
+	
+</div>
+    <div id="divLoadingBg" style="display: none; z-index: 1000000; position: fixed; width: 100%;
+        top: 0px; bottom: 0px; height: expression(getDocHeight()); background-image: url('https://www.codal.ir/Images/progressbg.png');">
+        <div id="divLoading" style="position: fixed; width: 140px; top: 300px; left: 45%;
+            padding: 5px; background-color: White; font-size: 9px;">
+            <img src="https://www.codal.ir/Images/InProgress1.gif" border="0" alt="">
+            &nbsp;
+            <span id="ctl00_lblLoadingMessage" style="font-size:X-Small;">لطفاً چند لحظه صبر کنید...</span>
+        </div>
+    </div>
+    <div class="html_format_header">
+        <div class="clear" style="height: 12px;">
+        </div>
+        <div class="html_format_header_icon">
+            <img src='https://www.codal.ir/imgs/header_icon.png' alt="icon">
+        </div>
+        <h1 id="ctl00_h1MasterTitle">گزارش فعالیت ماهانه</h1>
+        <div class="ddlReportWrapper">
+            <select name="ctl00$ddlTable" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ddlTable\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ddlTable" class="label" style="color:Red;width:50%;">
+	<option selected="selected" value="1000005">گزارش فعالیت ماهانه
+
+</select>
+            
+            
+        <div title="صفحه بعدی" class="next_report" style="float: left;" onclick="btnNextClick();"></div><div title="صفحه قبلی" class="prev_report" style="float: left;" onclick="btnPrevClick();"></div></div>
+        <a id="ctl00_hlChangeLanguage" class="eng" href="Decision.aspx?LetterSerial=rwmiR9atZtPdys5iuUiLxA%3d%3d&rt=5&let=58&ct=0&ft=-1&lng=en-us" style="font-family:Tahoma;">EN</a>
+        <div class="clear" style="height: 10px;">
+        </div>
+    </div>
+    <input name="ctl00$hdfThumbPrint" type="hidden" id="ctl00_hdfThumbPrint">
+    <div class="clear" style="height: 15px;">
+    </div>
+    <div class="symbol_and_name">
+        <div class="rows">
+            <div class="text_holder">
+                <div id="ctl00_divCompanyCaption" class="lable">شرکت:</div>
+                <div class="varios">
+                    <span id="ctl00_txbCompanyName" class="label" style="color:#C04000;">داده گستر عصر نوین</span>
+                    
+                    <span id="ctl00_CustomValidator1" style="color:Red;font-weight:bold;display:none;visibility:hidden;">تاریخ نامعتبر</span>
+                    
+                    
+                </div>
+            </div>
+            <div class="text_holder">
+                <div id="ctl00_divListedCapitalCaption" class="lable">سرمایه ثبت شده:</div>
+                <div class="varios">
+                    <span id="ctl00_lblListedCapital" class="label" style="color:#C04000;">4,000,000</span>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <div class="text_holder">
+                <div id="ctl00_divSymbolCaption" class="lable">نماد:</div>
+                <div class="varios">
+                    <span id="ctl00_lblDisplaySymbol" class="label" style="color:#C04000;"></span>
+                    <span id="ctl00_txbSymbol" class="label" style="color:#C04000;">های وب</span>
+                    
+                </div>
+            </div>
+            <div class="text_holder">
+                <div id="ctl00_divUnauthorizedCapital" class="lable">سرمایه ثبت نشده:</div>
+                <div class="varios">
+                    <span id="ctl00_txbUnauthorizedCapital" class="label" style="color:#C04000;">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <div class="text_holder">
+                <div id="ctl00_divIsicCaption" class="lable">کد صنعت (ISIC):</div>
+                <div class="varios">
+                    <span id="ctl00_lblISIC" class="label" style="color:#C04000;">731003</span>
+                </div>
+            </div>
+            <div class="text_holder">
+                <div style="margin: 5px 4px;">
+                    <span id="ctl00_lblReportName" class="label">گزارش فعالیت ماهانه</span>
+                    <span id="ctl00_lblPeriod" class="label" style="color:#C04000;">1 ماهه</span>
+                    <span id="ctl00_lblEndTo" class="label">منتهی به</span>
+                    <span id="ctl00_lblPeriodEndToDate" class="label" style="color:#C04000;"><bdo dir="ltr">1399/01/31</bdo></span>
+                    <span id="ctl00_lblIsAudited" class="label" style="display:none;">(حسابرسی نشده)</span>
+                </div>
+            </div>
+        </div>  
+         <div class="text_holder">
+            <div id="ctl00_divYearEndToDateCaption" class="lable">سال مالی منتهی به:</div>
+            <div class="varios">
+                <span id="ctl00_lblYearEndToDate" class="label" style="color:#C04000;"><bdo dir="ltr">1399/12/30</bdo></span>
+            </div>
+        </div>      
+        <div class="text_holder">
+            <div id="ctl00_divCompanyStateCaption" class="lable">وضعیت ناشر:</div>
+            <div class="varios">
+                <span id="ctl00_lblCompanyState" class="label" style="color:#C04000;">پذیرفته شده در بورس تهران</span>
+            </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+    
+<style type="text/css">
+    .label
+    {
+        font-size: 8pt;
+        font-family: tahoma;
+    }
+</style>
+<div id="ctl00_ucSignature1_pnlMain" class="main_note" style="background-color:#C1E2B4;">
+    <div class="verify">
+       
+    
+    </div>
+    <div class="noteholder">
+        <img alt="information" src='https://www.codal.ir/imgs/inforation.png'>
+        <span id="ctl00_ucSignature1_lblSignature" class="signature" style="color:DarkGreen;">اطلاعات نمایش داده شده با اطلاعات امضا شده مطابقت دارد</span>
+        <div class="clear"></div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+    <div class="clear" style="height: 5px;">
+    </div>
+   <div class="errorHolder">
+        <span id="ctl00_lblError" class="Error" style="color:DarkRed;font-weight:bold;"></span>
+    </div>
+   <input type="hidden" name="ctl00$hdfVersion" id="ctl00_hdfVersion" value="0">
+   
+   <div class="note_price_Excel">
+    <input type="image" name="ctl00$ibtnExport" id="ctl00_ibtnExport" class="Hidden" src="https://www.codal.ir/Images/ExportToExcel.jpg" alt="Export To Excel" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ibtnExport&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:20px;border-width:0px;display:none;">
+    </div>
+    <div class="clear">
+    </div>
+    
+    
+
+    <div id="ctl00_cphBody_divMainContainer" style="width: 90%; margin: 0 auto;">
+        <div>
+            
+
+ 
+
+
+        </div>
+        <span id="ctl00_cphBody_lblError"></span>
+
+        
+                
+
+<div includeinexcel="true">
+    <table id="ctl00_cphBody_ucService1_Table1" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td colspan="10">
+                <span id="ctl00_cphBody_ucService1_lblProductionMsg" class="notify" style="display:none;"></span>
+            </td>
+	</tr>
+	<tr>
+		<td colspan="10">
+                <table width="100%" align="center" class="gv">
+                    <tr>
+                            <th id="ctl00_cphBody_ucService1_thServiceContractNameCaption" rowspan="2" align="center" style="width:35%;">
+                            <span id="ctl00_cphBody_ucService1_lblServiceContractNameCaption">شرح خدمات یا فروش</span>
+                        </th>
+		
+                            <th id="ctl00_cphBody_ucService1_thContarctCaption" align="center" colspan="2">
+                            <span id="ctl00_cphBody_ucService1_lblContarctCaption">قراردادها</span>
+                        </th>
+		
+                            <th align="center" colspan="6">
+                            <span id="ctl00_cphBody_ucService1_lblRevenueRecognizedCaption">درآمد شناسایی شده</span>
+                        </th>
+                        <th rowspan="2" align="center" style="width: 10%;">
+                            <span id="ctl00_cphBody_ucService1_lblDescCaption">توضیحات</span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th align="center" style="width: 13%;">
+                            <span id="ctl00_cphBody_ucService1_lblContractDateCaption">تاریخ عقد قرارداد</span>
+                        </th>
+                        <th align="center" style="width: 10%;">
+                            <span id="ctl00_cphBody_ucService1_lblContractDurationCaption">مدت قرارداد (ماه)</span>
+                        </th>
+                            <th id="ctl00_cphBody_ucService1_thContractAmountCaption" align="center" style="display:none;width:0;">
+                            <span id="ctl00_cphBody_ucService1_lblContractAmountCaption">پیش بینی درآمد حاصل از قرارداد در سال مالی جاری</span>
+                        </th>
+		
+                            <th id="ctl00_cphBody_ucService1_thAnticipatedContractCaption" align="center" style="display:none;width:0;">
+                            <span id="ctl00_cphBody_ucService1_lblAnticipatedContractCaption">پیش بینی بهای تمام شده قرارداد در سال مالی جاری</span>
+                        </th>
+		
+                            <th id="ctl00_cphBody_ucService1_thBeginningLastPeriod" align="center" style="display:none;width:0;">
+                                <span id="ctl00_cphBody_ucService1_lblBeginningLastPeriod">درآمد شناسایی شده از اول سال مالی تا پایان دوره مالی منتهی به </span>
+                            </th>
+		
+                            <th id="ctl00_cphBody_ucService1_thRevenueDiff" align="center" style="display:none;width:0;">
+                                <span id="ctl00_cphBody_ucService1_lblRevenueDiff">اصلاحات</span>
+                            </th>
+		
+                            <th id="ctl00_cphBody_ucService1_thEndOfTheFinancialLastPeriod" align="center" style="display:none;width:0;">
+                                <span id="ctl00_cphBody_ucService1_lblEndOfTheFinancialLastPeriod">درآمد شناسایی شده از اول سال مالی تا پایان دوره مالی منتهی به -اصلاح شده</span>
+                            </th>
+		
+
+                        <th align="center" style="width: 10%;">
+                            <span id="ctl00_cphBody_ucService1_lblRevenueDuringThePeriodCaption">درآمد شناسایی شده طی دوره یک ماهه منتهی به 1399/01/31</span>
+                        </th>
+                        <th align="center" style="width: 10%;">
+                            <span id="ctl00_cphBody_ucService1_lblRevenueFromTheBeginningCaption">درآمد شناسایی شده از اول سال مالی تا پایان دوره مالی منتهی به 1399/01/31</span>
+                        </th>
+                        <th align="center" style="width: 10%;">
+                            <span id="ctl00_cphBody_ucService1_lblRevenueEndOfTheFinancialPeriodCaption">درامد شناسایی شده تا پایان دوره مالی منتهی به 1398/12/29</span>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+	</tr>
+	<tr>
+		<td colspan="10">
+                <div style="width: 100%">
+                    <div>
+			<table class="gv" cellspacing="0" rules="all" border="1" id="ctl00_cphBody_ucService1_dgContract" style="border-style:Solid;width:100%;border-collapse:collapse;cursor: pointer">
+				<tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15110</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از ارائه خدمات عمومی اجباری (USO) در مناطق روستایی</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۲۴۹,۸۴۴</td><td align="center" style="width:10%;">۲۴۹,۸۴۴</td><td align="center" style="width:10%;">۱,۴۹۵,۴۳۰</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15111</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از ارائه خدمات IT</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۴۳۵,۳۳۵</td><td align="center" style="width:10%;">۴۳۵,۳۳۵</td><td align="center" style="width:10%;">۱,۲۷۵,۴۲۸</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15112</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از ارائه خدمات عمده فروشی پروانه FWA و استفاده از امکانات توسط سایر شرکت های دارنده پروانه</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۱۱۸,۳۰۱</td><td align="center" style="width:10%;">۱۱۸,۳۰۱</td><td align="center" style="width:10%;">۱,۶۴۴,۴۳۲</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15113</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از فروش تجهیزات سمت مشترکین</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۱,۶۲۶</td><td align="center" style="width:10%;">۱,۶۲۶</td><td align="center" style="width:10%;">۳۴,۳۶۴</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15108</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از ارائه خدمات پروانه FCP</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۱۸۸,۲۶۹</td><td align="center" style="width:10%;">۱۸۸,۲۶۹</td><td align="center" style="width:10%;">۱,۳۰۶,۸۹۵</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr>
+					<td align="right" style="width:0%;width:0%;display:none;">15109</td><td align="right" style="width:15%;width:35%;">درآمد حاصل از ارائه خدمات پروانه TRUNK</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۴۶,۵۴۸</td><td align="center" style="width:10%;">۴۶,۵۴۸</td><td align="center" style="width:10%;">۵۷۱,۸۹۸</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr><tr class="lightBlueBg">
+					<td align="right" style="width:0%;width:0%;display:none;">-1</td><td align="right" style="width:15%;width:35%;">جمع</td><td align="center" style="width:13%;">&nbsp;</td><td align="center" style="width:10%;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:10%;width:0;display:none;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:8%;display:none;width:0;">۰</td><td align="center" style="width:10%;">۱,۰۳۹,۹۲۳</td><td align="center" style="width:10%;">۱,۰۳۹,۹۲۳</td><td align="center" style="width:10%;">۶,۳۲۸,۴۴۷</td><td align="center" style="width:10%;">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+                </div>
+            </td>
+	</tr>
+</table>
+
+</div>
+            
+        <div class="clear" style="height: 20px;"></div>
+        <div id="ctl00_cphBody_divLetterDescriptionContainer">
+            
+            <div class="clear" style="height: 20px;"></div>
+            <fieldset>
+                <legend>
+                    <span id="ctl00_cphBody_lblDescMonth" style="color:graytext;font-size:Small;">کادر توضیحی مربوط به اطلاعات دوره 1 ماهه منتهی به 1399/01/31</span></legend>
+                 
+                <span id="txbDescMonth"></span>
+            </fieldset>
+            <div class="clear" style="height: 20px;"></div>
+            <fieldset>
+                <legend>
+                    <span id="ctl00_cphBody_lblDescYear" style="color:graytext;font-size:Small;">کادر توضیحی مربوط به اطلاعات تجمعی از ابتدای سال تا پایان تاریخ 1399/01/31</span></legend>
+                 
+                <span id="txbDescYear"></span>
+            </fieldset>
+        </div>
+        <div class="clear" style="height: 20px;">
+        </div>
+        <div style="width: 90%; margin-left: auto; margin-right: auto;">
+        </div>
+    </div>
+
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_CustomValidator1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_CustomValidator1 = document.all ? document.all["ctl00_CustomValidator1"] : document.getElementById("ctl00_CustomValidator1");
+ctl00_CustomValidator1.controltovalidate = "ctl00_txbPeriodEndToDate";
+ctl00_CustomValidator1.errormessage = "تاریخ نامعتبر";
+ctl00_CustomValidator1.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_CustomValidator1.clientvalidationfunction = "DateValidator";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('ctl00_CustomValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_CustomValidator1'));
+}
+//]]>
+</script>
+</form>
+</body>
+</html>
