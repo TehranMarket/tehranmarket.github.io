@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+</head>
+
+<body>
+<button onclick="grabServers()">Grab Servers</button><br /><br />
+
+<textarea style="width: 400px; height: 350px;"></textarea>
+</body>
+
+
+<script>
+
+function grabServers() {
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("POST", "http://saeron-app.top/v7", true); // false for synchronous request
+	xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4)
+			if (xmlHttp.status == 200) {
+				let Responses = decryptServers(xmlHttp.responseText);
+				if (Responses != null) {
+					document.querySelector("textarea").innerText = JSON.stringify(Responses);
+				}
+				else {
+					document.querySelector("textarea").innerText = "Failed to grab the data!";
+				}
+			}
+			else {
+				ocument.querySelector("textarea").innerText = "Failed to grab the data!";
+			}
+    }
+    xmlHttp.send("information=%7B%22update%22%3A%22ok%22%2C%22version%22%3A%22215%22%20%2C%22name%22%3A%22com.saeron.fast.com%22%20%2C%22local%22%3A%22fa%22%20%2C%22tz%22%3A%22Asia%2FTehran%22%7D&data=DC2692494D12C2A9F67247FFAE036B31B6B23AB6615FC6BC2D485FD16735EB1DC2FDA0D952C0ABDD8A6D95E97144B3396E262BD1F58C02F80DB711F9F3494A0B9C264B6FE66E0BE770CD7DA1780C829BA49B8D09B4C94984A7793986644FFD5FE4F18B73CF5D8C97D50FF406AC4E4BCCD560832BD8ED69166ACCE690AF7AC1907F5ABF44B171823CEA153C1EEF9AE86D7305F50042BBB5AD92049860B19EFF9C30AADB843BB201B287097706164EFED964E1591D0D4C64DAE831B93DD23FF25B08DE1A25F342605159FF59C40A1684F650FE3B8551996AFEF0DFF7267515BDAAB44BC14B1355A569B44A41BB50966C02F67AB8DD81DE3DA106F0FE912398C9339FE70D7CFEE69043E2BC09375BA69DB71C23054ED94B73C547CBF595EF6EC905A10AAF1F72AE0769613616075DAC0E1BCA7972FC1CB0C6B124965EEFDC071409034ACD9D73F6E6805E9A5DFB7542A33B5A6ABFDBAA787B28C19C71A459C9069F69B31BFBCC07EE7D2A5C53A405CDDB7878314B74544743644F50596652693971395768496C51564833447A6754");
+}
+
+function decryptServers(serversText) {
+	try
+	{
+		var key = "U_!D!p2s5d8y!B?.";
+		var iv = "00000000000000000000000000000000";
+		var ciphertext = serversText;
+
+		var ciphertextWA = CryptoJS.enc.Hex.parse(ciphertext);
+		var keyWA = CryptoJS.enc.Utf8.parse(key);
+		var ivWA = CryptoJS.enc.Utf8.parse(iv);
+		var ciphertextCP = { ciphertext: ciphertextWA };
+
+		var decrypted = CryptoJS.AES.decrypt(
+			ciphertextCP,
+			keyWA, 
+			{ iv: ivWA }
+		);
+
+		let decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
+
+		let begin = decryptedText.indexOf("conns");
+		if (begin != -1) {
+			begin = decryptedText.indexOf("[", begin);
+			let finish = decryptedText.indexOf("]", begin);
+			finish++;
+			
+			let Response = {};
+			Response.conns = JSON.parse(decryptedText.substr(begin, finish - begin));
+			return Response;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	catch(error)
+	{
+		return null;
+	}
+}
+</script>
+</html>
